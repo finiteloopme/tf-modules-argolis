@@ -42,6 +42,7 @@ variable "activate_apis" {
     "cloudresourcemanager.googleapis.com",
     "stackdriver.googleapis.com",
     "anthos.googleapis.com",
+    "cloudbuild.googleapis.com"
   ]
 }
 
