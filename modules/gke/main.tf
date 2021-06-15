@@ -57,7 +57,7 @@ module "gke" {
 
   release_channel             = "REGULAR"
 
-  node_pool_tags              = {
+  node_pools_tags              = {
     all = var.instance_tags
   }
 }
