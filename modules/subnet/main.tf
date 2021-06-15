@@ -7,7 +7,7 @@ module "gke-subnet" {
       {
             subnet_name       = var.gke_network.name
             subnet_ip         = var.gke_network.cidr
-            subnet_region     = var.gke_network.gcp_region
+            subnet_region     = var.gke_network.subnet_region
       }
   ]
 
