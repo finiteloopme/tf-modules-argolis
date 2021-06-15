@@ -7,17 +7,12 @@ variable "network" {
   default = "default"
 }
 
-variable "gcp_region" {
-  description = "Region where subnet should be created"
-  default = "us-central1"
-}
-
 variable "gke_network" {
     description = "Name of the subnet which will host GKE cluster"
     default = {
       name: "gke-subnetwork",
       cidr: "10.10.0.0/16",
-      subnet_region: var.gcp_region
+      subnet_region: "us-central1"
     }
 }
 
