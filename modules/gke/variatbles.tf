@@ -48,3 +48,9 @@ variable "svc_ips" {
       cidr: "10.12.0.0/16"
     }
 }
+
+variable "instance_tags" {
+  description = "List of network tags to be applied to the instance"
+  type = list(string)
+  default = []
+}

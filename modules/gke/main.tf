@@ -56,4 +56,8 @@ module "gke" {
   # service_account             = var.compute_engine_service_account
 
   release_channel             = "REGULAR"
+
+  node_pool_tags              = {
+    all = var.instance_tags
+  }
 }
