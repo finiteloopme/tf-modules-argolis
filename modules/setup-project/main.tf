@@ -77,10 +77,9 @@ module "org-policies-deny-list" {
  *****************************************/
 # Create Network
 module "create-default-network-and-firewall-rules" {
-  # source            = "git::https://github.com/finiteloopme/tf-modules-argolis.git//modules/gce"
-    source  = "../network"
+  source            = "git::https://github.com/finiteloopme/tf-modules-argolis.git//modules/gce"
 
-    project_id      = data.google_project.project_to_activate.project_id
+  project_id      = data.google_project.project_to_activate.project_id
 }
 
 /******************************************
