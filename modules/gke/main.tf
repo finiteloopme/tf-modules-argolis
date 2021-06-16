@@ -29,7 +29,8 @@ module "gke" {
   # zones                       = [var.gcp_zone]
   network                     = var.gke_instance.subnet.name
   # subnetwork                  = var.subnetwork
-  subnetwork                  = module.gke-subnet.subnets["${var.gcp_region}/${var.gke_instance.subnet.name}"].name
+  # subnetwork                  = module.gke-subnet.subnets["${var.gcp_region}/${var.gke_instance.subnet.name}"].name
+  subnetwork                  = var.gke_instance.subnet.name
   # subnetwork                  = var.gke_network.name
 
   ip_range_pods               = var.gke_instance.secondary_ranges.pod_ips.name
@@ -43,4 +44,7 @@ module "gke" {
   node_pools_tags              = {
     all = split(",", var.gke_instance.instance_tags)
   }
+  depends_on = [
+    module.gke-subnet
+  ]
 }
