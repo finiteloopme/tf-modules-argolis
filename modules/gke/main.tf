@@ -10,7 +10,7 @@ data "google_client_config" "default" {}
 module "gke-subnet"{
   source            = "git::https://github.com/finiteloopme/tf-modules-argolis.git//modules/subnet"
   project_id                  = var.project_id
-  network                     = var.network
+  network                     = var.gke_instance.network
   gke_network                 = var.gke_instance.subnet
   ip_range_pods               = var.gke_instance.secondary_ranges.pod_ips
   svc_ips                     = var.gke_instance.secondary_ranges.svc_ips
