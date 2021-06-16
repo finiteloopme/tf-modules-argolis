@@ -2,10 +2,6 @@ variable "project_id" {
   description = "Project hosting the GKE cluster"
 }
 
-variable "gke_cluster_name" {
-  description = "Details for the GKE cluster"
-}
-
 variable gke_instance{
   description   = "List of GKE instances to be created"
   type          = object({
