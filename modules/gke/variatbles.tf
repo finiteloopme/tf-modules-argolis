@@ -7,6 +7,7 @@ variable gke_instance{
   type          = object({
     name  = string
     instance_tags = string
+    network = string
     subnet  = object({
       name  = string
       cidr  = string

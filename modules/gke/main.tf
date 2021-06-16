@@ -27,7 +27,7 @@ module "gke" {
   regional                    = true # Create a regional cluster
   region                      = var.gcp_region
   # zones                       = [var.gcp_zone]
-  network                     = var.gke_instance.subnet.name
+  network                     = var.gke_instance.network
   # subnetwork                  = var.subnetwork
   # subnetwork                  = module.gke-subnet.subnets["${var.gcp_region}/${var.gke_instance.subnet.name}"].name
   subnetwork                  = var.gke_instance.subnet.name
