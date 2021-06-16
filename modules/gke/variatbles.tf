@@ -10,6 +10,7 @@ variable gke_instance{
     subnet  = object({
       name  = string
       cidr  = string
+      subnet_region = string
     })
     secondary_ranges  = object({
       pod_ips = object({
