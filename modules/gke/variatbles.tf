@@ -3,7 +3,29 @@ variable "project_id" {
 }
 
 variable "gke_cluster_name" {
-  description = "Name for the GKE cluster"
+  description = "Details for the GKE cluster"
+}
+
+variable gke_instance{
+  description   = "List of GKE instances to be created"
+  type          = object({
+    name  = string
+    instance_tags = string
+    subnet  = {
+      name  = string
+      cidr  = string
+    }
+    secondary_ranges  = {
+      pod_ips = {
+        name  = string
+        cidr  = string
+      },
+      svc_ips = {
+        name  = string
+        cidr  = string
+      }
+    }
+  })
 }
 
 variable "gcp_region" {
