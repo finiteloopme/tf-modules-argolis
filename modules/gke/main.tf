@@ -41,6 +41,6 @@ module "gke" {
   release_channel             = "REGULAR"
 
   node_pools_tags              = {
-    all = var.gke_instance.instance_tags
+    all = split(",", var.gke_instance.instance_tags)
   }
 }
