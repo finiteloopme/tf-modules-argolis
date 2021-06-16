@@ -11,20 +11,20 @@ variable gke_instance{
   type          = object({
     name  = string
     instance_tags = string
-    subnet  = {
+    subnet  = object({
       name  = string
       cidr  = string
-    }
-    secondary_ranges  = {
-      pod_ips = {
+    })
+    secondary_ranges  = object({
+      pod_ips = object({
         name  = string
         cidr  = string
-      },
-      svc_ips = {
+      }),
+      svc_ips = object({
         name  = string
         cidr  = string
-      }
-    }
+      })
+    })
   })
 }
 
