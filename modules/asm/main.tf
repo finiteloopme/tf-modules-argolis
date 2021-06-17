@@ -1,8 +1,7 @@
 
 data "google_container_cluster" "asm_cluster"{
   name                  = var.gke_cluster
-  location              = "region"
-  region                = var.gke_location
+  location              = var.gke_location
   project               = var.project_id
 }
 
