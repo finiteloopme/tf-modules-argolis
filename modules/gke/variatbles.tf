@@ -8,6 +8,7 @@ variable gke_instance{
     name  = string
     instance_tags = string
     network = string
+    resource_labels = map(string)
     subnet  = object({
       name  = string
       cidr  = string

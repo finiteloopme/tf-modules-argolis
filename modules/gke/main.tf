@@ -28,6 +28,7 @@ module "gke" {
   region                      = var.gcp_region
   # zones                       = [var.gcp_zone]
   network                     = var.gke_instance.network
+  cluster_resource_labels     = var.gke_instance.resource_labels
   # subnetwork                  = var.subnetwork
   # subnetwork                  = module.gke-subnet.subnets["${var.gcp_region}/${var.gke_instance.subnet.name}"].name
   subnetwork                  = var.gke_instance.subnet.name
