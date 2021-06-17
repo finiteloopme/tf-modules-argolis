@@ -13,7 +13,8 @@ module "instance_template" {
   # service_account = var.service_account
   service_account = {
     email  = data.google_compute_default_service_account.default_sa.email
-    scopes = ["https://www.googleapis.com/auth/cloud-platform"]
+    scopes = ["https://www.googleapis.com/auth/cloud-platform",
+              "https://www.googleapis.com/auth/devstorage.read_only"]
   }
   machine_type    = var.machine_type
 
