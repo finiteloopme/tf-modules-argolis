@@ -3,6 +3,8 @@ module "startup-script" {
   enable_setup_sudoers = true
 }
 
+# TODO - Replace this with 
+# https://github.com/finiteloopme/tf-modules-argolis/modules/gce_template
 module "instance_template" {
   source          = "terraform-google-modules/vm/google//modules/instance_template"
 
