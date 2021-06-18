@@ -23,4 +23,10 @@ module "instance_template" {
   tags                = var.instance_tags
 
   metadata          = var.metadata
+
+  access_config = [{
+    # Public IP
+    nat_ip       = null
+    network_tier = "PREMIUM"
+  }, ]
 }
