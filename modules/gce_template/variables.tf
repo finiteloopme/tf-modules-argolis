@@ -2,6 +2,11 @@ variable "project_id" {
   description = "ID for the project"
 }
 
+variable "name_prefix" {
+  description = "A prefix for the template name"
+  default = "default-gce-intance"
+}
+
 variable "gcp_region" {
   description = "GCP Region"
   default = "us-central1"

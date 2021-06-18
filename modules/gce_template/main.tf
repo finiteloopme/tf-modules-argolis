@@ -5,7 +5,7 @@
 
 module "instance_template" {
   source          = "terraform-google-modules/vm/google//modules/instance_template"
-
+  name_prefix     = var.name_prefix
   region          = var.gcp_region
   project_id      = data.google_project.gcp_project.project_id
   subnetwork        = data.google_compute_subnetwork.vm_subnetwork.self_link
