@@ -14,7 +14,8 @@ module "asm" {
   cluster_endpoint      = data.google_container_cluster.asm_cluster.endpoint
   enable_all            = true
 
-  options               = ["vm,hub-meshca,envoy-access-log,egressgateways,cloud-tracing,multicluster"]
+  # options               = ["vm,hub-meshca,envoy-access-log,egressgateways,cloud-tracing,multicluster"]
+  options               = ["vm"]
   # custom_overlays       = ["./custom_ingress_gateway.yaml"]
   skip_validation       = true
   outdir                = "./${var.gke_cluster}-outdir"
