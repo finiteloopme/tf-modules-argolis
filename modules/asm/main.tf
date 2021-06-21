@@ -15,7 +15,7 @@ module "asm" {
   enable_all            = true
 
   # options               = ["vm,hub-meshca,envoy-access-log,egressgateways,cloud-tracing,multicluster"]
-  options               = ["vm"]
+  options               = ["vm,hub-meshca"]
   # custom_overlays       = ["./custom_ingress_gateway.yaml"]
   skip_validation       = true
   outdir                = "./${var.gke_cluster}-outdir"
