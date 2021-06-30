@@ -11,7 +11,7 @@ module "default-network" {
     source  = "terraform-google-modules/network/google//modules/vpc"
 
     project_id      = data.google_project.current_gcp_project.project_id
-    network_name    = "default"
+    network_name    = var.network_name
     description     = "Default Network"
     routing_mode    = "GLOBAL"
     auto_create_subnetworks = true
@@ -21,7 +21,7 @@ module "default-network" {
 module "firewall-rule-allow-ssh-http-s" {
   source       = "terraform-google-modules/network/google//modules/firewall-rules"
   project_id   = data.google_project.current_gcp_project.project_id
-  network_name = module.default-network.network_name
+  network_name = var.network_name
 
   rules = [{
     name                    = "allow-ssh-https-ingress"
@@ -43,4 +43,8 @@ module "firewall-rule-allow-ssh-http-s" {
       metadata = "INCLUDE_ALL_METADATA"
     }
   }]
+
+  depends_on  = [
+    module.default-network
+  ]
 }
