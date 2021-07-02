@@ -5,6 +5,15 @@ data "google_container_cluster" "asm_cluster"{
   project               = var.project_id
 }
 
+module "hub" {
+  source           = "terraform-google-modules/kubernetes-engine/google//modules/hub"
+
+  project_id            = var.project_id
+  cluster_name          = var.gke_cluster
+  location              = var.gke_location
+  cluster_endpoint = data.google_container_cluster.asm_cluster.endpoint
+}
+
 module "asm" {
   source                = "terraform-google-modules/kubernetes-engine/google//modules/asm"
 
