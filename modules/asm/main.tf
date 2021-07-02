@@ -19,4 +19,6 @@ module "asm" {
   # custom_overlays       = ["./custom_ingress_gateway.yaml"]
   skip_validation       = true
   outdir                = "./${var.gke_cluster}-outdir"
+  # asm_version           = "1.9"
+  asm_version           = "1.10"
 }
