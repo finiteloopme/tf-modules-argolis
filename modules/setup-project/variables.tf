@@ -69,6 +69,7 @@ variable "boolean_org_policies" {
     "constraints/compute.requireShieldedVm" = false
     "constraints/compute.requireOsLogin" = false
     "constraints/iam.disableServiceAccountKeyCreation" = false
+    "constraints/iam.disableCrossProjectServiceAccountUsage" = false
   }
 }
 
