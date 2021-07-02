@@ -68,6 +68,7 @@ variable "boolean_org_policies" {
   default     = {
     "constraints/compute.requireShieldedVm" = false
     "constraints/compute.requireOsLogin" = false
+    "constraints/iam.disableServiceAccountKeyCreation" = false
   }
 }
 
