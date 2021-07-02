@@ -20,8 +20,7 @@ module "asm" {
   project_id            = var.project_id
   cluster_name          = var.gke_cluster
   location              = var.gke_location
-  # cluster_endpoint      = data.google_container_cluster.asm_cluster.endpoint
-  cluster_endpoint      = module.hub.cluster_endpoint
+  cluster_endpoint      = data.google_container_cluster.asm_cluster.endpoint
   # enable_all            = true
   enable_cluster_labels = true
   enable_cluster_roles  = true
@@ -34,4 +33,8 @@ module "asm" {
   outdir                = "./${var.gke_cluster}-outdir"
   # asm_version           = "1.9"
   asm_version           = "1.10"
+
+  depends_on = [
+    module.hub
+  ]
 }
