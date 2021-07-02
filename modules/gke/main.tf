@@ -49,3 +49,10 @@ module "gke" {
     module.gke-subnet
   ]
 }
+
+module "asm"{
+  source                = "git::https://github.com/finiteloopme/tf-modules-argolis.git//modules/asm"
+  gke_cluster           = module.gke.name
+  project_id            = var.project_id
+  gke_location          = var.gcp_region
+}
