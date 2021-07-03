@@ -24,17 +24,13 @@ module "asm" {
   # enable_all            = true
   enable_cluster_labels = true
   enable_cluster_roles  = true
-  enable_registration   = true
+  # enable_registration   = true
 
   # options               = ["vm,hub-meshca,envoy-access-log,egressgateways,cloud-tracing,multicluster"]
-  options               = ["vm,hub-meshca"]
+  options               = ["vm,hub-meshca,envoy-access-log"]
   # custom_overlays       = ["./custom_ingress_gateway.yaml"]
   skip_validation       = true
   outdir                = "./${var.gke_cluster}-outdir"
   # asm_version           = "1.9"
   asm_version           = "1.10"
-
-  depends_on = [
-    module.hub
-  ]
 }
