@@ -21,11 +21,11 @@ module "asm" {
   cluster_name          = var.gke_cluster
   location              = var.gke_location
   cluster_endpoint      = data.google_container_cluster.asm_cluster.endpoint
-  # enable_all            = true
-  enable_cluster_labels = true
-  enable_cluster_roles  = true
+  enable_all            = true
+  # enable_cluster_labels = true
+  # enable_cluster_roles  = true
   enable_registration   = true
-  enable_gcp_components = true
+  # enable_gcp_components = true
 
   # options               = ["vm,hub-meshca,envoy-access-log,egressgateways,cloud-tracing,multicluster"]
   options               = ["vm,hub-meshca,envoy-access-log,egressgateways,cloud-tracing"]
