@@ -36,7 +36,7 @@ module "firewall-rule-allow-ssh-http-s" {
     allow = [{
       protocol = "tcp"
       # ssh, http/s, Postgres
-      ports    = ["22", "80", "443", "8080","8443", "5432"]
+      ports    = ["22", "80", "443", "8080","8443", "5432", "15021"]
     }]
     deny = []
     log_config = {
