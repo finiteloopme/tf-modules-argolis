@@ -25,6 +25,7 @@ module "asm" {
   enable_cluster_labels = true
   enable_cluster_roles  = true
   enable_registration   = true
+  enable_gcp_components = true
 
   # options               = ["vm,hub-meshca,envoy-access-log,egressgateways,cloud-tracing,multicluster"]
   options               = ["vm,hub-meshca,envoy-access-log"]
