@@ -5,14 +5,14 @@ data "google_container_cluster" "asm_cluster"{
   project               = var.project_id
 }
 
-# module "hub" {
-#   source           = "terraform-google-modules/kubernetes-engine/google//modules/hub"
+module "hub" {
+  source           = "terraform-google-modules/kubernetes-engine/google//modules/hub"
 
-#   project_id            = var.project_id
-#   cluster_name          = var.gke_cluster
-#   location              = var.gke_location
-#   cluster_endpoint      = data.google_container_cluster.asm_cluster.endpoint
-# }
+  project_id            = var.project_id
+  cluster_name          = var.gke_cluster
+  location              = var.gke_location
+  cluster_endpoint      = data.google_container_cluster.asm_cluster.endpoint
+}
 
 module "asm" {
   source                = "terraform-google-modules/kubernetes-engine/google//modules/asm"
@@ -24,7 +24,7 @@ module "asm" {
   # enable_all            = true
   enable_cluster_labels = true
   enable_cluster_roles  = true
-  enable_registration   = true
+  # enable_registration   = true
   enable_gcp_components = true
 
   # options               = ["vm,hub-meshca,envoy-access-log,egressgateways,cloud-tracing,multicluster"]
