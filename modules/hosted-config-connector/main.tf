@@ -23,8 +23,9 @@ resource "null_resource" "hosted-config-connector"{
         when            = create
         command         = "./scripts/install-hosted-config-connector.sh ${data.google_project.host_project.project_id} ${var.config_connecor_id} ${var.config_connector_region}"
     }
+    
     provisioner "local-exec" {
         when            = destroy
-        command         = "./scripts/uninstall-hosted-config-connector.sh ${data.google_project.host_project.project_id} ${var.config_connecor_id} ${var.config_connector_region}"
+        command         = "./scripts/uninstall-hosted-config-connector.sh ${var.host_project_id} ${var.config_connecor_id} ${var.config_connector_region}"
     }
 }
