@@ -28,12 +28,12 @@ resource "null_resource" "hosted-config-connector"{
 
     provisioner "local-exec" {
         when            = create
-        command         = "${path.module}/scripts/install-hosted-config-connector.sh  ${self.trigger.project_id} ${self.trigger.config_connecor_id} ${self.trigger.config_connector_region}"
+        command         = "${path.module}/scripts/install-hosted-config-connector.sh  ${self.triggers.project_id} ${self.triggers.config_connecor_id} ${self.triggers.config_connector_region}"
     }
 
     provisioner "local-exec" {
         when            = destroy
-        command         = "./scripts/uninstall-hosted-config-connector.sh ${self.trigger.project_id} ${self.trigger.config_connecor_id} ${self.trigger.config_connector_region}"
+        command         = "./scripts/uninstall-hosted-config-connector.sh ${self.triggers.project_id} ${self.triggers.config_connecor_id} ${self.triggers.config_connector_region}"
     }
     depends_on = [
         module.project-services,
