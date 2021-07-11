@@ -19,15 +19,22 @@ module "project-services" {
 # 3. Config connector module
 ##################################################################
 resource "null_resource" "hosted-config-connector"{
+
+  triggers = {
+    project_id          = data.google_project.host_project.project_id
+    config_connecor_id  = var.config_connecor_id
+    config_connector_region = var.config_connector_region
+  }
+
     provisioner "local-exec" {
         when            = create
-        command         = "${path.module}/scripts/install-hosted-config-connector.sh ${data.google_project.host_project.project_id} ${var.config_connecor_id} ${var.config_connector_region}"
+        command         = "${path.module}/scripts/install-hosted-config-connector.sh  ${self.trigger.project_id} ${self.trigger.config_connecor_id} ${self.trigger.config_connector_region}"
     }
 
-    # provisioner "local-exec" {
-    #     when            = destroy
-    #     command         = "./scripts/uninstall-hosted-config-connector.sh ${var.host_project_id} ${var.config_connecor_id} ${var.config_connector_region}"
-    # }
+    provisioner "local-exec" {
+        when            = destroy
+        command         = "./scripts/uninstall-hosted-config-connector.sh ${self.trigger.project_id} ${self.trigger.config_connecor_id} ${self.trigger.config_connector_region}"
+    }
     depends_on = [
         module.project-services,
     ]
