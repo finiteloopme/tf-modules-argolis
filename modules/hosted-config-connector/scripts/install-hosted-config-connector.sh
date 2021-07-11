@@ -1,4 +1,4 @@
-#!bin/bash
+#!bin/sh
 
 PROJECT_ID=${1}
 CONFIG_CONTROLLER_NAME=${2}
