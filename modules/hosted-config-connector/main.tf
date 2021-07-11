@@ -21,7 +21,7 @@ module "project-services" {
 resource "null_resource" "hosted-config-connector"{
     provisioner "local-exec" {
         when            = create
-        command         = "./scripts/install-hosted-config-connector.sh ${data.google_project.host_project.project_id} ${var.config_connecor_id} ${var.config_connector_region}"
+        command         = "${path.module}/scripts/install-hosted-config-connector.sh ${data.google_project.host_project.project_id} ${var.config_connecor_id} ${var.config_connector_region}"
     }
 
     # provisioner "local-exec" {
