@@ -5,9 +5,9 @@ CONFIG_CONTROLLER_NAME=${2}
 LOCATION=${3}
 
 print_message(){
-    MSG_TO_PRINT = ${1}
+    MSG_TO_PRINT=${1}
     echo "############################################"
-    echo MSG_TO_PRINT
+    echo $MSG_TO_PRINT
     echo "############################################"
 }
 

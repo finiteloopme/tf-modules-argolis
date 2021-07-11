@@ -28,4 +28,7 @@ resource "null_resource" "hosted-config-connector"{
     #     when            = destroy
     #     command         = "./scripts/uninstall-hosted-config-connector.sh ${var.host_project_id} ${var.config_connecor_id} ${var.config_connector_region}"
     # }
+    depends_on = [
+        module.project-services,
+    ]
 }
