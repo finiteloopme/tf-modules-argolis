@@ -3,6 +3,7 @@
 PROJECT_ID=${1}
 CONFIG_CONTROLLER_NAME=${2}
 LOCATION=${3}
+SA_OUTPUT_FILE=${4}
 
 print_message(){
     export MSG_TO_PRINT=${1}
@@ -33,11 +34,12 @@ main(){
     export SA_EMAIL="$(kubectl get ConfigConnectorContext -n config-control \
     -o jsonpath='{.items[0].spec.googleServiceAccount}' 2> /dev/null)"
 
-    print_message "Configuring access for SA: ${SA_EMAIL}"
-    gcloud projects add-iam-policy-binding "${PROJECT_ID}" \
-        --member "serviceAccount:${SA_EMAIL}" \
-        --role "roles/owner" \
-        --quiet
+    echo ${SA_EMAIL} > ${SA_OUTPUT_FILE}
+    print_message "SA used with config controller is: ${SA_EMAIL}"
+    # gcloud projects add-iam-policy-binding "${PROJECT_ID}" \
+    #     --member "serviceAccount:${SA_EMAIL}" \
+    #     --role "roles/owner" \
+    #     --quiet
 
 }
 

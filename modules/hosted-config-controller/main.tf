@@ -19,6 +19,10 @@ module "project-services" {
 ##################################################################
 # 3. Config connector module
 ##################################################################
+local {
+    sa-output-file = "${path.module}/sa-output.txt"
+}
+
 resource "null_resource" "config-contoller"{
 
   triggers = {
@@ -29,7 +33,7 @@ resource "null_resource" "config-contoller"{
 
     provisioner "local-exec" {
         when            = create
-        command         = "${path.module}/scripts/install-hosted-config-connector.sh  ${self.triggers.project_id} ${self.triggers.config_connecor_id} ${self.triggers.config_connector_region}"
+        command         = "${path.module}/scripts/install-hosted-config-connector.sh  ${self.triggers.project_id} ${self.triggers.config_connecor_id} ${self.triggers.config_connector_region} ${local.sa-output-file}"
     }
 
     provisioner "local-exec" {
@@ -39,5 +43,12 @@ resource "null_resource" "config-contoller"{
 
     depends_on = [
         module.project-services,
+    ]
+}
+
+data "local_file" "config-controller-sa"{
+    filename    = local.sa-output-file
+    depends_on  = [
+        resource.null_resource.config_controller
     ]
 }
