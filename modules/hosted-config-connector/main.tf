@@ -13,12 +13,17 @@ module "project-services" {
     project_id      = data.google_project.host_project.project_id
 
     activate_apis   = var.activate_apis
+    
+    depends_on = [
+        resource.null_resource.config-contoller-remove,
+    ]
+
 }
 
 ##################################################################
 # 3. Config connector module
 ##################################################################
-resource "null_resource" "hosted-config-connector"{
+resource "null_resource" "config-contoller-create"{
 
   triggers = {
     project_id          = data.google_project.host_project.project_id
@@ -38,4 +43,18 @@ resource "null_resource" "hosted-config-connector"{
     depends_on = [
         module.project-services,
     ]
+}
+
+resource "null_resource" "config-contoller-remove"{
+
+  triggers = {
+    project_id          = data.google_project.host_project.project_id
+    config_connecor_id  = var.config_connecor_id
+    config_connector_region = var.config_connector_region
+  }
+
+    provisioner "local-exec" {
+        when            = destroy
+        command         = "./scripts/uninstall-hosted-config-connector.sh ${self.triggers.project_id} ${self.triggers.config_connecor_id} ${self.triggers.config_connector_region}"
+    }
 }

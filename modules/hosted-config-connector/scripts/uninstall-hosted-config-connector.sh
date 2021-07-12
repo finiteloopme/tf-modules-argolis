@@ -24,7 +24,6 @@ main(){
     gcloud projects remove-iam-policy-binding "${PROJECT_ID}" \
         --member "serviceAccount:${SA_EMAIL}" \
         --role "roles/owner" \
-        --project "${PROJECT_ID}" \
         --quiet
 
     print_message "Deleting config connector: ${CONFIG_CONTROLLER_NAME}"
