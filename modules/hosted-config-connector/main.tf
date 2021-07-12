@@ -14,9 +14,9 @@ module "project-services" {
 
     activate_apis   = var.activate_apis
     
-    depends_on = [
-        resource.null_resource.config-contoller-remove,
-    ]
+    # depends_on = [
+    #     resource.null_resource.config-contoller-remove,
+    # ]
 
 }
 
