@@ -49,6 +49,6 @@ resource "null_resource" "config-contoller"{
 data "local_file" "config-controller-sa"{
     filename    = local.sa-output-file
     depends_on  = [
-        resource.null_resource.config_controller
+        resource.null_resource.config-controller
     ]
 }
