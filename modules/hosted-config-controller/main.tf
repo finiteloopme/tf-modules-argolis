@@ -23,7 +23,7 @@ locals {
     sa-output-file = "${path.module}/sa-output.txt"
 }
 
-resource "null_resource" "config-contoller"{
+resource "null_resource" "config-controller"{
 
   triggers = {
     project_id          = data.google_project.host_project.project_id
