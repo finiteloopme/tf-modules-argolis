@@ -19,7 +19,7 @@ module "project-services" {
 ##################################################################
 # 3. Config connector module
 ##################################################################
-local {
+locals {
     sa-output-file = "${path.module}/sa-output.txt"
 }
 
