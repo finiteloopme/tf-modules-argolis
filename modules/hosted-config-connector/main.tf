@@ -36,10 +36,6 @@ resource "null_resource" "config-contoller-create"{
         command         = "${path.module}/scripts/install-hosted-config-connector.sh  ${self.triggers.project_id} ${self.triggers.config_connecor_id} ${self.triggers.config_connector_region}"
     }
 
-    provisioner "local-exec" {
-        when            = destroy
-        command         = "./scripts/uninstall-hosted-config-connector.sh ${self.triggers.project_id} ${self.triggers.config_connecor_id} ${self.triggers.config_connector_region}"
-    }
     depends_on = [
         module.project-services,
     ]
@@ -55,6 +51,6 @@ resource "null_resource" "config-contoller-remove"{
 
     provisioner "local-exec" {
         when            = destroy
-        command         = "./scripts/uninstall-hosted-config-connector.sh ${self.triggers.project_id} ${self.triggers.config_connecor_id} ${self.triggers.config_connector_region}"
+        command         = "${path.module}/scripts/uninstall-hosted-config-connector.sh ${self.triggers.project_id} ${self.triggers.config_connecor_id} ${self.triggers.config_connector_region}"
     }
 }
