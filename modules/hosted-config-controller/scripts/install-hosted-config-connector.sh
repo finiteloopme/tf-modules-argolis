@@ -34,7 +34,7 @@ main(){
     export SA_EMAIL="$(kubectl get ConfigConnectorContext -n config-control \
     -o jsonpath='{.items[0].spec.googleServiceAccount}' 2> /dev/null)"
 
-    echo ${SA_EMAIL} > ${SA_OUTPUT_FILE}
+    echo -n ${SA_EMAIL} > ${SA_OUTPUT_FILE}
     print_message "SA used with config controller is: ${SA_EMAIL}"
     # gcloud projects add-iam-policy-binding "${PROJECT_ID}" \
     #     --member "serviceAccount:${SA_EMAIL}" \
