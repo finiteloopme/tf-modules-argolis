@@ -4,10 +4,12 @@ variable "organisation_id" {
 
 variable "billing_account" {
   description = "The ID of the billing account to associate this project with"
+  default     = ""
 }
 
 variable "folder_id" {
   description = "Folder ID for the project container"
+  default     = ""
 }
 
 variable "project_id" {
