@@ -67,14 +67,15 @@ module "firewall-rule-default-allow-internal" {
     target_service_accounts = null
     allow = [{
       protocol = "tcp"
-      ports    = ["22-65535"]
+      ports    = ["0-65535"]
     },
     {
       protocol = "udp"
-      ports    = ["22-65535"]
+      ports    = ["0-65535"]
     },
     {
       protocol = "icmp"
+      ports    = null
     }]
     deny = []
     log_config = {
