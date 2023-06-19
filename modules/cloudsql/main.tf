@@ -32,7 +32,8 @@ module "cloudsql_staging" {
   "ipv4_enabled": false,
   "require_ssl": null,
   "authorized_networks": [],
-  "allocated_ip_range": data.google_compute_subnetwork.sql-subnet.name,
+  # "allocated_ip_range": data.google_compute_subnetwork.sql-subnet.name,
+  "allocated_ip_range": null,
   "private_network": data.google_compute_network.sql-parent-network.self_link
   # "private_network": "projects/${var.project_id}/global/networks/${data.google_compute_subnetwork.sql-subnet.network}"
   #"enable_private_path_for_google_cloud_services": true
@@ -43,5 +44,7 @@ module "cloudsql_staging" {
   user_name     = "admin"
   user_password = "admin" # this is a security risk - do not do this for real world use-cases!
 
-  module_depends_on = [module.private-service-access-sql.peering_completed]
+  # module_depends_on = [module.private-service-access-sql.peering_completed]
+
+  depends_on = [ module.private-service-access-sql ]
 }
