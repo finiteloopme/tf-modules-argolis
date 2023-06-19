@@ -15,7 +15,7 @@ plan:
 	terraform plan ${TF_ARGS}
 
 deploy:
-	terraform apply ${TF_ARGS}
+	terraform apply ${TF_ARGS} -auto-approve
 
 undeploy:
-	terraform destroy ${TF_ARGS}
+	terraform destroy ${TF_ARGS} -auto-approve
