@@ -32,8 +32,8 @@ module "cloudsql_staging" {
   "ipv4_enabled": false,
   "require_ssl": null,
   "authorized_networks": [],
-  # "allocated_ip_range": data.google_compute_subnetwork.sql-subnet.name,
-  "allocated_ip_range": null,
+  "allocated_ip_range": module.private-service-access-sql.google_compute_global_address_name,
+  # "allocated_ip_range": null,
   "private_network": data.google_compute_network.sql-parent-network.self_link
   # "private_network": "projects/${var.project_id}/global/networks/${data.google_compute_subnetwork.sql-subnet.network}"
   #"enable_private_path_for_google_cloud_services": true
