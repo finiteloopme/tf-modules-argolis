@@ -13,3 +13,7 @@ output "network" {
     ]
 }
 
+output "network_name" {
+  value = module.custom-network.network_name
+}
+
