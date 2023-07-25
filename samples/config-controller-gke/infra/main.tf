@@ -11,19 +11,6 @@ module "config-controller"{
   depends_on = [ time_sleep.wait_for_gcp_services ]
 }
 
-# module "conf-ctrl-sa-binding" {
-#   source = "terraform-google-modules/iam/google//modules/service_accounts_iam"
-
-#   service_accounts = [module.config-controller.config_controller_sa]
-#   project          = module.manage-project-apis.project_id
-#   # mode             = "additive"
-#   bindings = {
-#     "roles/owner" = [
-#       "serviceAccount:${module.config-controller.config_controller_sa}",
-#     ]
-#   }
-# }
-
 resource "google_project_iam_binding" "conf-ctrl-sa-binding" {
   project          = module.manage-project-apis.project_id
   role    = "roles/owner"
