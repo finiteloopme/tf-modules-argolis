@@ -16,6 +16,13 @@ module "project-services" {
     
 }
 
+# We need to wait for services to "start"
+resource "time_sleep" "wait_for_gcp_services" {
+  create_duration = "10s"
+
+  depends_on = [module.project-services]
+}
+
 ##################################################################
 # 3. Config connector module
 ##################################################################
@@ -44,7 +51,7 @@ resource "null_resource" "config-controller"{
     }
 
     depends_on = [
-        module.project-services,
+        time_sleep.wait_for_gcp_services,
     ]
 }
 
