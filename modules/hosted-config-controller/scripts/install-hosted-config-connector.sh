@@ -4,6 +4,8 @@ PROJECT_ID=${1}
 CONFIG_CONTROLLER_NAME=${2}
 LOCATION=${3}
 SA_OUTPUT_FILE=${4}
+NETWORK=${5}
+SUBNET=${6}
 
 print_message(){
     export MSG_TO_PRINT=${1}
@@ -14,19 +16,22 @@ print_message(){
 
 main(){
     print_message "Creating config connector can take upto 15 minutes"
-    gcloud alpha anthos config controller create ${CONFIG_CONTROLLER_NAME} \
+    gcloud anthos config controller create ${CONFIG_CONTROLLER_NAME} \
         --project=${PROJECT_ID} \
         --location=${LOCATION} \
+        --full-management \
+        --network=${NETWORK} \
+        --subnet=${SUBNET} \
         --quiet
 
     print_message "Created following config connector"
-    gcloud alpha anthos config controller describe ${CONFIG_CONTROLLER_NAME} \
+    gcloud anthos config controller describe ${CONFIG_CONTROLLER_NAME} \
         --project=${PROJECT_ID} \
         --location=${LOCATION} \
-        --quiet
+       --quiet
 
     print_message "Configuring service account"
-    gcloud alpha anthos config controller get-credentials ${CONFIG_CONTROLLER_NAME} \
+    gcloud anthos config controller get-credentials ${CONFIG_CONTROLLER_NAME} \
         --project=${PROJECT_ID} \
         --location ${LOCATION} \
         --quiet

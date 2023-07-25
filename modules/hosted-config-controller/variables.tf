@@ -19,6 +19,14 @@ variable "activate_apis" {
   ]
 }
 
-# variable "project_id" {
-#   description = "Project targeted to be configured via config-connector"
-# }
+variable "network_id" {
+  description = "Network for config-connector"
+  type = string
+  default = "default"
+}
+
+variable "subnet_id" {
+  description = "Subnet for config-connector"
+  type = string
+  default = "default"
+}

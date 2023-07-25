@@ -12,20 +12,6 @@ print_message(){
 }
 
 main(){
-    # print_message "Removing service account"
-    # gcloud alpha anthos config controller get-credentials ${CONFIG_CONTROLLER_NAME} \
-    #     --project=${PROJECT_ID} \
-    #     --location ${LOCATION}  \
-    #     --quiet
-
-    # export SA_EMAIL="$(kubectl get ConfigConnectorContext -n config-control \
-    # -o jsonpath='{.items[0].spec.googleServiceAccount}' 2> /dev/null)"
-
-    # gcloud projects remove-iam-policy-binding "${PROJECT_ID}" \
-    #     --member "serviceAccount:${SA_EMAIL}" \
-    #     --role "roles/owner" \
-    #     --quiet
-
     print_message "Deleting config connector: ${CONFIG_CONTROLLER_NAME}"
     gcloud alpha anthos config controller delete ${CONFIG_CONTROLLER_NAME} \
         --project=${PROJECT_ID} \

@@ -29,11 +29,13 @@ resource "null_resource" "config-controller"{
     project_id          = data.google_project.host_project.project_id
     config_connecor_id  = var.config_connecor_id
     config_connector_region = var.config_connector_region
+    network = var.network_id
+    subnet = var.subnet_id
   }
 
     provisioner "local-exec" {
         when            = create
-        command         = "${path.module}/scripts/install-hosted-config-connector.sh  ${self.triggers.project_id} ${self.triggers.config_connecor_id} ${self.triggers.config_connector_region} ${local.sa-output-file}"
+        command         = "${path.module}/scripts/install-hosted-config-connector.sh  ${self.triggers.project_id} ${self.triggers.config_connecor_id} ${self.triggers.config_connector_region} ${local.sa-output-file} ${self.triggers.network} ${self.triggers.subnet}"
     }
 
     provisioner "local-exec" {
