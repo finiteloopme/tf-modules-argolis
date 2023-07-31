@@ -13,5 +13,5 @@ spec:
   selector:
     app: fastapi-server
   type: LoadBalancer
-status:
-  loadBalancer: {}
+# status:
+#   loadBalancer: {}
