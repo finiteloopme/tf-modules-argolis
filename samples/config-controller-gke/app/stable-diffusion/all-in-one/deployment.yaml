@@ -25,9 +25,9 @@ spec:
         - containerPort: 80          
         resources:
           limits:
-            nvidia.com/gpu: 1
+            nvidia.com/gpu: 2
           requests:
-            cpu: "18"
+            cpu: "36"
             memory: "36Gi"
         env:
           - name: TF_FORCE_GPU_ALLOW_GROWTH
