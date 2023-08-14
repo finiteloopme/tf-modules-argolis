@@ -15,18 +15,16 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: stable-diffusion
+  name: stable-diffusion-webui
   namespace: default
   labels:
-    app: stable-diffusion
+    app: stable-diffusion-webui
 spec:
   type: LoadBalancer
   ports:
-  - port: 8500
+  - port: 80
     protocol: TCP
-    name: tf-serving-grpc
-  - port: 8501
-    protocol: TCP
-    name: tf-serving-http
+    targetPort: 7860
+    name: sd-serving-http
   selector:
-    app: stable-diffusion
+    app: stable-diffusion-webui
