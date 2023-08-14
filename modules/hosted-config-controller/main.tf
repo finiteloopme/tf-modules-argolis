@@ -51,13 +51,13 @@ data "local_file" "config-controller-sa"{
     ]
 }
 
-# set the relevant permissions for logging, etc
+# set the relevant permissions creating GCP resources
 module "gke-workload-id-bindings" {
     source   = "terraform-google-modules/iam/google//modules/projects_iam"
     projects = [data.google_project.host_project.project_id]
 
     bindings = {
-        "roles/editor" = [
+        "roles/owner" = [
             "serviceAccount:${data.local_file.config-controller-sa.content}"
         ]
     }
