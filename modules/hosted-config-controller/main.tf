@@ -9,20 +9,12 @@ data "google_project" "host_project" {
 # 2. Activate Services
 ##################################################################
 module "project-services" {
-    source          = "terraform-google-modules/project-factory/google//modules/project_services"
+    source = "github.com/finiteloopme/tf-modules-argolis//modules/manage-gcp-apis"
     project_id      = data.google_project.host_project.project_id
 
-    activate_apis   = var.activate_apis
+    project_apis   = var.activate_apis
     
 }
-
-# We need to wait for services to "start"
-resource "time_sleep" "wait_for_gcp_services" {
-  create_duration = "10s"
-
-  depends_on = [module.project-services]
-}
-
 ##################################################################
 # 3. Config connector module
 ##################################################################
@@ -33,7 +25,7 @@ locals {
 resource "null_resource" "config-controller"{
 
   triggers = {
-    project_id          = data.google_project.host_project.project_id
+    project_id          = module.project-services.project_id
     config_connecor_id  = var.config_connecor_id
     config_connector_region = var.config_connector_region
     network = var.network_id
@@ -50,9 +42,6 @@ resource "null_resource" "config-controller"{
         command         = "${path.module}/scripts/uninstall-hosted-config-connector.sh ${self.triggers.project_id} ${self.triggers.config_connecor_id} ${self.triggers.config_connector_region}"
     }
 
-    depends_on = [
-        time_sleep.wait_for_gcp_services,
-    ]
 }
 
 data "local_file" "config-controller-sa"{
@@ -60,4 +49,17 @@ data "local_file" "config-controller-sa"{
     depends_on  = [
         resource.null_resource.config-controller
     ]
+}
+
+# set the relevant permissions for logging, etc
+module "gke-workload-id-bindings" {
+    source   = "terraform-google-modules/iam/google//modules/projects_iam"
+    projects = [data.google_project.host_project.project_id]
+
+    bindings = {
+        "roles/editor" = [
+            "serviceAccount:${data.local_file.config-controller-sa.content}"
+        ]
+    }
+    depends_on = [ null_resource.config-controller ]
 }
