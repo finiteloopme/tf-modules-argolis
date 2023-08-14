@@ -29,6 +29,8 @@ spec:
       labels:
         app: stable-diffusion
     spec:
+      nodeSelector:
+        cloud.google.com/gke-accelerator: "nvidia-tesla-t4"
       containers:
       - name: tf-serving
         image: "tensorflow/serving:2.11.0"
