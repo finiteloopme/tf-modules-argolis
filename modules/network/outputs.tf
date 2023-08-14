@@ -1,5 +1,5 @@
 output "subnets" {
-    value = module.default-network.subnets_self_links
+    value = module.default-network.subnets
 }
 
 output "network" {
