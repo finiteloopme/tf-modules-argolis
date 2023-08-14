@@ -33,104 +33,75 @@ spec:
   location: us-east1
   releaseChannel:
     channel: REGULAR
-  # nodeConfig:
-  #   oauthScopes:
-  #   - cloud-platform
-  #   - gke-default
-    # - https://www.googleapis.com/auth/cloud-platform
-# ---
-# apiVersion: container.cnrm.cloud.google.com/v1beta1
-# kind: ContainerCluster
-# metadata:
-#   name: gke-us-central1
-#   namespace: config-control
-# spec:
-#   description: An autopilot cluster.
-#   enableAutopilot: true
-#   location: us-central1
-#   releaseChannel:
-#     channel: REGULAR
-#   nodeConfig:
-#     oauthScopes:
-#       - cloud-platform
-#       - gke-default
-# ---
-# apiVersion: container.cnrm.cloud.google.com/v1beta1
-# kind: ContainerCluster
-# metadata:
-#   name: gke-us-west1
-#   namespace: config-control
-# spec:
-#   description: An autopilot cluster.
-#   enableAutopilot: true
-#   location: us-west1
-#   releaseChannel:
-#     channel: REGULAR
-#   nodeConfig:
-#     oauthScopes:
-#       - cloud-platform
-#       - gke-default
-# ---
-# apiVersion: container.cnrm.cloud.google.com/v1beta1
-# kind: ContainerCluster
-# metadata:
-#   name: gke-australia-southeast1
-#   namespace: config-control
-# spec:
-#   description: An autopilot cluster.
-#   enableAutopilot: true
-#   location: australia-southeast1
-#   releaseChannel:
-#     channel: REGULAR
-#   nodeConfig:
-#     oauthScopes:
-#       - cloud-platform
-#       - gke-default
-# ---
-# apiVersion: container.cnrm.cloud.google.com/v1beta1
-# kind: ContainerCluster
-# metadata:
-#   name: gke-europe-west2
-#   namespace: config-control
-# spec:
-#   description: An autopilot cluster.
-#   enableAutopilot: true
-#   location: europe-west2
-#   releaseChannel:
-#     channel: REGULAR
-#   nodeConfig:
-#     oauthScopes:
-#       - cloud-platform
-#       - gke-default
-# ---
-# apiVersion: container.cnrm.cloud.google.com/v1beta1
-# kind: ContainerCluster
-# metadata:
-#   name: gke-asia-east1
-#   namespace: config-control
-# spec:
-#   description: An autopilot cluster.
-#   enableAutopilot: true
-#   location: asia-east1
-#   releaseChannel:
-#     channel: REGULAR
-#   nodeConfig:
-#     oauthScopes:
-#       - cloud-platform
-#       - gke-default
-# ---
-# apiVersion: container.cnrm.cloud.google.com/v1beta1
-# kind: ContainerCluster
-# metadata:
-#   name: gke-asia-southeast2
-#   namespace: config-control
-# spec:
-#   description: An autopilot cluster.
-#   enableAutopilot: true
-#   location: asia-southeast2
-#   releaseChannel:
-#     channel: REGULAR
-#   nodeConfig:
-#     oauthScopes:
-#       - cloud-platform
-#       - gke-default
+---
+apiVersion: container.cnrm.cloud.google.com/v1beta1
+kind: ContainerCluster
+metadata:
+  name: gke-us-central1
+  namespace: config-control
+spec:
+  description: An autopilot cluster.
+  enableAutopilot: true
+  location: us-central1
+  releaseChannel:
+    channel: REGULAR
+---
+apiVersion: container.cnrm.cloud.google.com/v1beta1
+kind: ContainerCluster
+metadata:
+  name: gke-us-west1
+  namespace: config-control
+spec:
+  description: An autopilot cluster.
+  enableAutopilot: true
+  location: us-west1
+  releaseChannel:
+    channel: REGULAR
+---
+apiVersion: container.cnrm.cloud.google.com/v1beta1
+kind: ContainerCluster
+metadata:
+  name: gke-australia-southeast1
+  namespace: config-control
+spec:
+  description: An autopilot cluster.
+  enableAutopilot: true
+  location: australia-southeast1
+  releaseChannel:
+    channel: REGULAR
+---
+apiVersion: container.cnrm.cloud.google.com/v1beta1
+kind: ContainerCluster
+metadata:
+  name: gke-europe-west2
+  namespace: config-control
+spec:
+  description: An autopilot cluster.
+  enableAutopilot: true
+  location: europe-west2
+  releaseChannel:
+    channel: REGULAR
+---
+apiVersion: container.cnrm.cloud.google.com/v1beta1
+kind: ContainerCluster
+metadata:
+  name: gke-asia-east1
+  namespace: config-control
+spec:
+  description: An autopilot cluster.
+  enableAutopilot: true
+  location: asia-east1
+  releaseChannel:
+    channel: REGULAR
+---
+apiVersion: container.cnrm.cloud.google.com/v1beta1
+kind: ContainerCluster
+metadata:
+  name: gke-asia-southeast2
+  namespace: config-control
+spec:
+  description: An autopilot cluster.
+  enableAutopilot: true
+  location: asia-southeast2
+  releaseChannel:
+    channel: REGULAR
