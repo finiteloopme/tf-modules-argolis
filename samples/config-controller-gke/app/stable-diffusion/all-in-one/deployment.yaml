@@ -19,7 +19,8 @@ spec:
         cloud.google.com/gke-accelerator: "nvidia-tesla-t4"
         # cloud.google.com/gke-accelerator: "nvidia-tesla-a100"
       containers:
-      - image: gcr.io/gcp-ml-172005/sd-fastapi-allinone:latest
+      # - image: gcr.io/gcp-ml-172005/sd-fastapi-allinone:latest
+      - image: gcr.io/gcp-ml-172005/sd-fastapi-diffusion-model:latest
         name: fastapi-k8s
         ports:
         - containerPort: 80          
