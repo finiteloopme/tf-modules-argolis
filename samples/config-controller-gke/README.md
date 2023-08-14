@@ -1,6 +1,18 @@
-Try - australia south east instead of us west & central
-1. T4
-2. P100
+
+# Setup
+
+```bash
+# initialise the scripts
+make infra-init
+# plan the deployment
+make infra-plan
+# deploy the infrastructure
+make infra-deploy
+
+# initialise app deployment
+make app-init
+make app-deploy
+```
 
 # References
 

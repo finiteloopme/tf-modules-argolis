@@ -20,6 +20,7 @@ locals {
         "cloudresourcemanager.googleapis.com",
         # Enabling the ServiceUsage API allows the new project to be quota checked from now on.
         "serviceusage.googleapis.com",
+        "logging.googleapis.com",
   ]
   # Network configuration
   network_name     = "${var.app_name}-network" # VPC containing resources will be given this name

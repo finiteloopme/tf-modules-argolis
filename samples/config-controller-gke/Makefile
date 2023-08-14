@@ -1,7 +1,8 @@
 include config.properties
 INFRA_FOLDER=./infra
+APP_FOLDER=./app
 
-.dummy: infra-init, infra-plan, infra-deploy, infra-undeploy
+.dummy: infra-init, infra-plan, infra-deploy, infra-undeploy, app-init, app-plan, app-deploy, app-undeploy
 
 infra-init:
 	cd ${INFRA_FOLDER}; make init
@@ -14,3 +15,15 @@ infra-deploy:
 
 infra-undeploy:
 	cd ${INFRA_FOLDER}; make undeploy
+
+app-init:
+	cd ${APP_FOLDER}; make init
+
+app-plan:
+	cd ${APP_FOLDER}; make plan
+
+app-deploy:
+	cd ${APP_FOLDER}; make deploy
+
+app-undeploy:
+	cd ${APP_FOLDER}; make undeploy

@@ -1,13 +1,3 @@
-## Enable Config Sync
-apiVersion: gkehub.cnrm.cloud.google.com/v1beta1
-kind: GKEHubFeature
-metadata:
-  name: gkehubfeature-config-sync
-  namespace: config-control
-spec:
-  location: global
-  resourceID: configmanagement
----
 apiVersion: gkehub.cnrm.cloud.google.com/v1beta1
 kind: GKEHubFeatureMembership
 metadata:
@@ -24,23 +14,11 @@ spec:
       sourceFormat: unstructured
       git:
         syncRepo: "https://github.com/finiteloopme/tf-modules-argolis"
-        syncBranch: "master"
+        syncBranch: "main"
         policyDir: "samples/config-controller-gke/app/stable-diffusion/all-in-one"
         syncWaitSecs: "20"
         syncRev: "HEAD"
         secretType: "none"
----
-apiVersion: container.cnrm.cloud.google.com/v1beta1
-kind: ContainerCluster
-metadata:
-  name: gke-us-east1
-  namespace: config-control
-spec:
-  description: An autopilot cluster.
-  enableAutopilot: true
-  location: us-east1
-  releaseChannel:
-    channel: REGULAR
 ---
 apiVersion: gkehub.cnrm.cloud.google.com/v1beta1
 kind: GKEHubMembership

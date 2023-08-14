@@ -23,3 +23,11 @@ resource "google_spanner_database" "quote_svc_db" {
   ]
   deletion_protection = false
 }
+
+module "streaming-pubsub-topic" {
+  source  = "terraform-google-modules/pubsub/google"
+  project_id = module.manage-project-apis.project_id
+  create_topic = true
+  create_subscriptions = false
+  topic = var.pubsub_topic_name
+}

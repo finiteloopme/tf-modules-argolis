@@ -32,6 +32,13 @@ CREATE TABLE policyholder_address (
   CONSTRAINT Fk_Address FOREIGN KEY (address_id) REFERENCES address (address_id)
 )PRIMARY KEY (policyholder_id, address_id);
 
+CREATE TABLE policyholder_policy (
+  policyholder_id STRING(36) NOT NULL,
+  policy_id STRING(36) NOT NULL,
+  CONSTRAINT Fk_PolicyHolder FOREIGN KEY (policyholder_id) REFERENCES policyholder (policyholder_id),
+  CONSTRAINT Fk_Policy FOREIGN KEY (policy_id) REFERENCES address (policy_id)
+)PRIMARY KEY (policyholder_id, policy_id);
+
 CREATE TABLE claim (
   claim_id STRING(36) NOT NULL,
   policy_id STRING(36) NOT NULL,

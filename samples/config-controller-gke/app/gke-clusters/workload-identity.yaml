@@ -1,0 +1,35 @@
+# apiVersion: iam.cnrm.cloud.google.com/v1beta1
+# kind: IAMPolicy
+# metadata:
+#   name: iampolicy-gke-workloadidentity
+#   namespace: config-control
+# spec:
+#   resourceRef:
+#     kind: IAMServiceAccount
+#     name: sa-gke-workloadidentity
+#   bindings:
+#     - role: roles/iam.workloadIdentityUser
+#       members:
+#         # replace ${PROJECT_ID} with your project name
+#         # - serviceAccount:test-tf-script.svc.id.goog[default/ksa-workloadidentity]
+#         - serviceAccount:test-tf-script.svc.id.goog[default/default]
+#     - role: roles/logging.admin
+#       members:
+#         - serviceAccount:test-tf-script.svc.id.goog[default/default]
+# ---
+# apiVersion: iam.cnrm.cloud.google.com/v1beta1
+# kind: IAMServiceAccount
+# metadata:
+#   name: sa-gke-workloadidentity
+#   namespace: config-control
+# spec:
+#   displayName: Google Service Account for GKE WorkloadIdentity
+# ---
+# apiVersion: v1
+# kind: ServiceAccount
+# metadata:
+#   name: default
+#   namespace: default
+#   annotations:
+#     # replace ${PROJECT_ID?} with your project name
+#     iam.gke.io/gcp-service-account: sa-gke-workloadidentity@test-tf-script.iam.gserviceaccount.com

@@ -5,6 +5,8 @@ locals {
         "compute.googleapis.com",
         "cloudresourcemanager.googleapis.com",
         "spanner.googleapis.com",
+        "pubsub.googleapis.com",
+        "dataflow.googleapis.com",
         "run.googleapis.com",
         # Enabling the ServiceUsage API allows the new project to be quota checked from now on.
         "serviceusage.googleapis.com",
