@@ -16,8 +16,8 @@ spec:
         app: fastapi-server
     spec:
       nodeSelector:
-        # cloud.google.com/gke-accelerator: "nvidia-tesla-t4"
-        cloud.google.com/gke-accelerator: "nvidia-tesla-a100"
+        cloud.google.com/gke-accelerator: "nvidia-tesla-t4"
+        # cloud.google.com/gke-accelerator: "nvidia-tesla-a100"
       containers:
       - image: gcr.io/gcp-ml-172005/sd-fastapi-allinone:latest
         name: fastapi-k8s
@@ -27,8 +27,8 @@ spec:
           limits:
             nvidia.com/gpu: 1
           requests:
-            cpu: "9"
-            memory: "60Gi"
+            cpu: "36"
+            memory: "36Gi"
         env:
           - name: TF_FORCE_GPU_ALLOW_GROWTH
             value: "true"
