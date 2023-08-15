@@ -5,6 +5,7 @@ locals {
         "compute.googleapis.com",
         "container.googleapis.com",
         "cloudresourcemanager.googleapis.com",
+        "dns.googleapis.com",
         "spanner.googleapis.com",
         "pubsub.googleapis.com",
         "dataflow.googleapis.com",

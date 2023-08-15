@@ -3,6 +3,8 @@ kind: MultiClusterIngress
 metadata:
   name: stable-diffusion-webui-mci
   namespace: default
+  annotations:
+    networking.gke.io/static-ip: 34.120.238.244
 spec:
   template:
     spec:
