@@ -17,6 +17,8 @@ We need two patterns to make this work:
 1. Global service: [Stable Diffusion Web UI][10]
 2. How do you "expand" footprint in different region?
 3. Multi Cluster Service & Ingress
+4. To fail: use a different GPU
+5. Recover the system
 
 # Technical Stack
 
