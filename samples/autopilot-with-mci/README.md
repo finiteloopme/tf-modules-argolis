@@ -16,9 +16,10 @@ We need two patterns to make this work:
 
 1. Global service: [Stable Diffusion Web UI][10]
 2. How do you "expand" footprint in different region?
-3. Multi Cluster Service & Ingress
-4. To fail: use a different GPU
-5. Recover the system
+3. How is the app deployed using `ConfigSync`?
+4. Multi Cluster Service & Ingress
+5. To fail: use a different GPU
+6. Recover the system
 
 # Technical Stack
 
@@ -33,6 +34,17 @@ Two modes of GKE:
 > [Here][8] is a feature comparison for Autopilot and Standard.  And [a guide][9] to help choose the mode of operation.
 
 ## Multi Cluster Ingress
+
+[Multi Cluster Ingress][11] is a cloud-hosted controller for deploying shared load balancing resources across clusters and across regions.
+
+Multi Cluster Ingress supports many use cases including:
+
+1. A single, consistent virtual IP (VIP) for an app, independent of where the app is deployed globally.
+2. Multi-regional, multi-cluster availability through health checking and traffic failover.
+3. Proximity-based routing through public Anycast VIPs for low client latency.
+4. Transparent cluster migration for upgrades or cluster rebuilds.
+
+A **MultiClusterService** is a custom resource used by Multi Cluster Ingress to represent sharing services across clusters.
 
 # References
 
@@ -55,3 +67,4 @@ Two modes of GKE:
 [8]: https://cloud.google.com/kubernetes-engine/docs/resources/autopilot-standard-feature-comparison
 [9]: https://cloud.google.com/kubernetes-engine/docs/concepts/choose-cluster-mode
 [10]: http://sd.kunall.demo.altostrat.com/
+[11]: https://cloud.google.com/kubernetes-engine/docs/concepts/multi-cluster-ingress
