@@ -1,0 +1,15 @@
+apiVersion: networking.gke.io/v1
+kind: MultiClusterService
+metadata:
+  name: stable-diffusion-webui-mcs
+  namespace: default
+spec:
+  template:
+    spec:
+      selector:
+        app: stable-diffusion-webui
+      ports:
+      - name: web
+        protocol: TCP
+        port: 80
+        targetPort: 7860

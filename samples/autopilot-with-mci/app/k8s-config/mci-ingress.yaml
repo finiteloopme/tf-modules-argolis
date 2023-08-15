@@ -1,0 +1,11 @@
+apiVersion: networking.gke.io/v1
+kind: MultiClusterIngress
+metadata:
+  name: stable-diffusion-webui-mci
+  namespace: default
+spec:
+  template:
+    spec:
+      backend:
+        serviceName: stable-diffusion-webui-mcs
+        servicePort: 80

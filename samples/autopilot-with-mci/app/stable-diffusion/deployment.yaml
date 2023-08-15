@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stable-diffusion-webui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stable-diffusion-webui
+  template:
+    metadata:
+      labels:
+        app: stable-diffusion-webui
+    spec:
+      nodeSelector:
+        cloud.google.com/gke-accelerator: "nvidia-tesla-t4"
+      containers:
+      - name: sd
+        image: us-central1-docker.pkg.dev/kunal-scratch/stable-diffusion/sd-web-ui-docker:0.1
+        env:
+        - name: LD_LIBRARY_PATH
+          value: /usr/local/nvidia/lib64
+        resources:
+          limits:
+            nvidia.com/gpu: 1
+          requests:
+            cpu: "3500m"
+            memory: "14Gi"
+            ephemeral-storage: 30Gi
