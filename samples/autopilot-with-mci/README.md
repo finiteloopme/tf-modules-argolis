@@ -46,6 +46,33 @@ Multi Cluster Ingress supports many use cases including:
 
 A **MultiClusterService** is a custom resource used by Multi Cluster Ingress to represent sharing services across clusters.
 
+## Deployment
+
+```bash
+# clone the git repo
+git clone https://github.com/finiteloopme/tf-modules-argolis
+cd tf-modules-argolis/samples/autopilot-with-mci
+# Deploy Infrastructure in GCP
+# We assume the you have a GCP project
+# And you have created a GCS bucket: ${GCP_PROJECT_ID}-tf-state
+make infra-init
+make infra-plan
+make infra-deploy
+# Deploy Stable Diffusion App
+# make deploy creates a static IP, which can be found using: gcloud compute addresses list
+# It should be external IP resource named: ext-sd-web-ui-mci-ip
+# Set that IP as the annotation in: app/k8s-config/mci-ingress.yaml
+make app-init
+make app-deploy
+```
+
+## Clean up
+
+```bash
+make app-undeploy
+make infra-undeploy
+```
+
 # References
 
 1. [GPU on Autopilot][1]
